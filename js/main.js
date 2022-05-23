@@ -19,18 +19,19 @@
 const app = new Vue({
     el: `#app`,
     data: {
-        arrTodo: [
-            "To do",
-        ],
+        arrTodo: [],
         newTodo: "",
     },
     methods: {
         addTodo() {
-            if(this.newTodo !== "") {
+            if(this.newTodo && this.newTodo !== "") {
                 this.arrTodo.push(this.newTodo);
                 this.newTodo = "";
-            },
+            };
         },
-    },
+        removeTodo(i) {
+            this.arrTodo.splice(i, 1);
+        }
+    }
 });
 //   /VueJS

@@ -17,17 +17,23 @@
 <body>
     <div id="app" class="container">
         <div class="logo">
-            <img src="" alt="">
+            <img src="img/istockphoto-1224038421-170667a.jpg" alt="light-bulb">
         </div>
+
         <div class="new-todo">
-            <input type="text" placeholder="New To Do" v-model="newTodo">
-            <button @click="addTodo()">Add</button>
+            <form @submit.prevent="addTodo()">
+                <input type="text" placeholder="New To Do" v-model="newTodo" @keyup.enter="addTodo()" required minlength="5">
+                <button @click="addTodo()">Add</button>
+            </form>
         </div>
+
         <div class="todos-container">
-            <ul>
-                <li class="todo" v-for="todo in arrTodo">{{todo}} <i class="fa-solid fa-xmark"></i></li>
+            <ul v-if="arrTodo.length > 0">
+                <li class="todo" v-for="todo in arrTodo">{{todo}} <i @click="removeTodo(i)" class="fa-solid fa-xmark"></i></li>
             </ul>
+            <h2 v-show="arrTodo.length === 0">Nothing To Do here.</h2>
         </div>
+        
     </div>
     <!-- Vue CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
