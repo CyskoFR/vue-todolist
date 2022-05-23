@@ -29,9 +29,9 @@ const app = new Vue({
                 this.newTodo = "";
             };
         },
-        removeTodo(i) {
-            this.arrTodo.splice(i, 1);
-        }
-    }
+        removeTodo(index) {
+            this.arrTodo.splice(index, 1);
+        },
+    },
 });
 //   /VueJS

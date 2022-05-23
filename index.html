@@ -22,14 +22,15 @@
 
         <div class="new-todo">
             <form @submit.prevent="addTodo()">
-                <input type="text" placeholder="New To Do" v-model="newTodo" @keyup.enter="addTodo()" required minlength="5">
+                <input type="text" placeholder="New To Do ..." v-model="newTodo" @keyup.enter="addTodo()">
                 <button @click="addTodo()">Add</button>
             </form>
         </div>
 
         <div class="todos-container">
             <ul v-if="arrTodo.length > 0">
-                <li class="todo" v-for="todo in arrTodo">{{todo}} <i @click="removeTodo(i)" class="fa-solid fa-xmark"></i></li>
+                <li class="todo" v-for="(todo, index) in arrTodo">{{ todo }} <i @click="removeTodo(index)" class="fa-solid fa-xmark"></i></li>
+                
             </ul>
             <h2 v-show="arrTodo.length === 0">Nothing To Do here.</h2>
         </div>
